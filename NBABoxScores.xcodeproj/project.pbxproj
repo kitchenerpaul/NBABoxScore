@@ -16,7 +16,7 @@
 		17B7A71E1C0CF65B0061050A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B7A71C1C0CF65B0061050A /* LaunchScreen.storyboard */; };
 		17B7A7291C0CF65B0061050A /* NBABoxScoresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7281C0CF65B0061050A /* NBABoxScoresTests.m */; };
 		17B7A7341C0CF65B0061050A /* NBABoxScoresUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7331C0CF65B0061050A /* NBABoxScoresUITests.m */; };
-		17B7A7431C0F5F6B0061050A /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* DateViewController.m */; };
+		17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* ContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		17B7A72F1C0CF65B0061050A /* NBABoxScoresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBABoxScoresUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B7A7331C0CF65B0061050A /* NBABoxScoresUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBABoxScoresUITests.m; sourceTree = "<group>"; };
 		17B7A7351C0CF65B0061050A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17B7A7411C0F5F6B0061050A /* DateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
-		17B7A7421C0F5F6B0061050A /* DateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateViewController.m; sourceTree = "<group>"; };
+		17B7A7411C0F5F6B0061050A /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		17B7A7421C0F5F6B0061050A /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +109,8 @@
 				17B7A7141C0CF65B0061050A /* Main.storyboard */,
 				17B7A7111C0CF65B0061050A /* ViewController.h */,
 				17B7A7121C0CF65B0061050A /* ViewController.m */,
-				17B7A7411C0F5F6B0061050A /* DateViewController.h */,
-				17B7A7421C0F5F6B0061050A /* DateViewController.m */,
+				17B7A7411C0F5F6B0061050A /* ContentViewController.h */,
+				17B7A7421C0F5F6B0061050A /* ContentViewController.m */,
 				17B7A70B1C0CF65B0061050A /* Supporting Files */,
 			);
 			path = NBABoxScores;
@@ -280,7 +280,7 @@
 			files = (
 				17B7A7131C0CF65B0061050A /* ViewController.m in Sources */,
 				17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */,
-				17B7A7431C0F5F6B0061050A /* DateViewController.m in Sources */,
+				17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */,
 				17B7A7191C0CF65B0061050A /* NBABoxScores.xcdatamodeld in Sources */,
 				17B7A70D1C0CF65B0061050A /* main.m in Sources */,
 			);

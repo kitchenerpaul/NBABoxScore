@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RZG-3r-wXE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -31,15 +32,16 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304.5" y="367"/>
         </scene>
-        <!--Date View Controller-->
+        <!--Content View Controller-->
         <scene sceneID="qaD-Fm-FiO">
             <objects>
-                <viewController id="RZG-3r-wXE" customClass="DateViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatePageViewControllerID" id="RZG-3r-wXE" customClass="ContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sd7-Zo-GH3"/>
                         <viewControllerLayoutGuide type="bottom" id="ZgB-nZ-fvE"/>
@@ -51,7 +53,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWs-lI-d8O" userLabel="Date View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5a-Wf-9dH">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5a-Wf-9dH">
                                         <rect key="frame" x="44" y="22" width="13" height="15"/>
                                         <animations/>
                                         <constraints>
@@ -126,10 +128,10 @@
                                         <exclude reference="P7M-yG-lGE"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="62e-fs-Qw4"/>
-                                        <exclude reference="g3n-eo-eQh"/>
                                         <exclude reference="XOG-Yk-kWF"/>
                                         <exclude reference="fo5-dM-dNo"/>
+                                        <exclude reference="62e-fs-Qw4"/>
+                                        <exclude reference="g3n-eo-eQh"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -137,10 +139,10 @@
                                         <include reference="P7M-yG-lGE"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="62e-fs-Qw4"/>
-                                        <include reference="g3n-eo-eQh"/>
                                         <include reference="XOG-Yk-kWF"/>
                                         <include reference="fo5-dM-dNo"/>
+                                        <include reference="62e-fs-Qw4"/>
+                                        <include reference="g3n-eo-eQh"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -217,10 +219,10 @@
                                         <exclude reference="4Nq-Be-N5E"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="pwm-LR-Bh6"/>
-                                        <exclude reference="rCf-fg-qq9"/>
                                         <exclude reference="J67-q9-x3h"/>
                                         <exclude reference="Z6X-dD-NqF"/>
+                                        <exclude reference="pwm-LR-Bh6"/>
+                                        <exclude reference="rCf-fg-qq9"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -229,17 +231,30 @@
                                         <include reference="4Nq-Be-N5E"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="pwm-LR-Bh6"/>
-                                        <include reference="rCf-fg-qq9"/>
                                         <include reference="J67-q9-x3h"/>
                                         <include reference="Z6X-dD-NqF"/>
+                                        <include reference="pwm-LR-Bh6"/>
+                                        <include reference="rCf-fg-qq9"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IHi-Ae-S3I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IHi-Ae-S3I">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.91712499999999997" green="0.91712499999999997" blue="0.91712499999999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellid" id="aSA-ZH-mmt">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aSA-ZH-mmt" id="IVY-NS-DdS">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -267,14 +282,14 @@
                                 <exclude reference="IHi-Ae-S3I"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="G1L-yu-tRK"/>
-                                <exclude reference="ZUH-oM-ZyY"/>
-                                <exclude reference="bR0-U7-FnU"/>
+                                <exclude reference="vZ3-kB-a7k"/>
                                 <exclude reference="HOc-Ce-y84"/>
                                 <exclude reference="lnI-bx-ThM"/>
                                 <exclude reference="mUb-yP-3dh"/>
                                 <exclude reference="rAA-ST-5pA"/>
-                                <exclude reference="vZ3-kB-a7k"/>
+                                <exclude reference="G1L-yu-tRK"/>
+                                <exclude reference="ZUH-oM-ZyY"/>
+                                <exclude reference="bR0-U7-FnU"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -283,14 +298,14 @@
                                 <include reference="IHi-Ae-S3I"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="G1L-yu-tRK"/>
-                                <include reference="ZUH-oM-ZyY"/>
-                                <include reference="bR0-U7-FnU"/>
+                                <include reference="vZ3-kB-a7k"/>
                                 <include reference="HOc-Ce-y84"/>
                                 <include reference="lnI-bx-ThM"/>
                                 <include reference="mUb-yP-3dh"/>
                                 <include reference="rAA-ST-5pA"/>
-                                <include reference="vZ3-kB-a7k"/>
+                                <include reference="G1L-yu-tRK"/>
+                                <include reference="ZUH-oM-ZyY"/>
+                                <include reference="bR0-U7-FnU"/>
                             </mask>
                         </variation>
                     </view>
@@ -303,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pia-6S-5C2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.5" y="1048"/>
+            <point key="canvasLocation" x="1047" y="367"/>
         </scene>
     </scenes>
     <resources>
