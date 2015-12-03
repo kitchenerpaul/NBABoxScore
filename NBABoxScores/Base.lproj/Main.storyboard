@@ -171,7 +171,7 @@
                                             <action selector="onCalendarButtonPressed:" destination="RZG-3r-wXE" eventType="touchUpInside" id="cG0-gK-kC7"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec. 2, 2015" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nq-Be-N5E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nq-Be-N5E">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -182,7 +182,7 @@
                                                 <variation key="widthClass=compact" constant="168"/>
                                             </constraint>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
@@ -236,42 +236,61 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IHi-Ae-S3I">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IHi-Ae-S3I" firstAttribute="top" secondItem="EWs-lI-d8O" secondAttribute="bottom" id="G1L-yu-tRK"/>
                             <constraint firstItem="1CJ-vB-R4P" firstAttribute="height" secondItem="EWs-lI-d8O" secondAttribute="height" multiplier="0.75" id="HOc-Ce-y84">
                                 <variation key="widthClass=compact" constant="-15.25"/>
                             </constraint>
                             <constraint firstItem="EWs-lI-d8O" firstAttribute="top" secondItem="VRf-nF-g9Q" secondAttribute="topMargin" id="N0R-Fe-2kD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EWs-lI-d8O" secondAttribute="trailing" constant="-20" id="OmN-Wu-1U2"/>
+                            <constraint firstItem="IHi-Ae-S3I" firstAttribute="leading" secondItem="VRf-nF-g9Q" secondAttribute="leadingMargin" constant="-20" id="ZUH-oM-ZyY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IHi-Ae-S3I" secondAttribute="trailing" constant="-20" id="bR0-U7-FnU"/>
                             <constraint firstItem="1CJ-vB-R4P" firstAttribute="width" secondItem="EWs-lI-d8O" secondAttribute="width" multiplier="0.6" id="lnI-bx-ThM"/>
                             <constraint firstItem="1CJ-vB-R4P" firstAttribute="centerY" secondItem="EWs-lI-d8O" secondAttribute="centerY" id="mUb-yP-3dh">
                                 <variation key="widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="1CJ-vB-R4P" firstAttribute="centerX" secondItem="VRf-nF-g9Q" secondAttribute="centerX" id="rAA-ST-5pA"/>
                             <constraint firstItem="EWs-lI-d8O" firstAttribute="leading" secondItem="VRf-nF-g9Q" secondAttribute="leadingMargin" constant="-20" id="shc-4Y-29U"/>
+                            <constraint firstItem="ZgB-nZ-fvE" firstAttribute="top" secondItem="IHi-Ae-S3I" secondAttribute="bottom" id="vZ3-kB-a7k"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="1CJ-vB-R4P"/>
+                                <exclude reference="IHi-Ae-S3I"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="G1L-yu-tRK"/>
+                                <exclude reference="ZUH-oM-ZyY"/>
+                                <exclude reference="bR0-U7-FnU"/>
                                 <exclude reference="HOc-Ce-y84"/>
                                 <exclude reference="lnI-bx-ThM"/>
                                 <exclude reference="mUb-yP-3dh"/>
                                 <exclude reference="rAA-ST-5pA"/>
+                                <exclude reference="vZ3-kB-a7k"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="1CJ-vB-R4P"/>
+                                <include reference="IHi-Ae-S3I"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="G1L-yu-tRK"/>
+                                <include reference="ZUH-oM-ZyY"/>
+                                <include reference="bR0-U7-FnU"/>
                                 <include reference="HOc-Ce-y84"/>
                                 <include reference="lnI-bx-ThM"/>
                                 <include reference="mUb-yP-3dh"/>
                                 <include reference="rAA-ST-5pA"/>
+                                <include reference="vZ3-kB-a7k"/>
                             </mask>
                         </variation>
                     </view>
@@ -279,6 +298,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="4Nq-Be-N5E" id="dcr-1P-ysH"/>
+                        <outlet property="expandableTableView" destination="IHi-Ae-S3I" id="1oG-Yz-uU0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pia-6S-5C2" userLabel="First Responder" sceneMemberID="firstResponder"/>
