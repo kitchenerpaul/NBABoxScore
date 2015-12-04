@@ -13,7 +13,7 @@
 @protocol ContentViewControllerDelegate <NSObject>
 
 -(void)goForwardOneDay;
-
+-(void)goBackOneDay;
 
 @end
 
@@ -25,7 +25,14 @@
 @property NSMutableArray *sectionTitleArray;
 @property NSMutableArray *arrayForBool;
 @property NSInteger page;
-
+@property NSDate *previousDay;
+@property NSDate *nextDay;
+@property NSDateFormatter *dateFormatter;
+@property NSTimeInterval oneDay;
+@property int secondsInDay;
 @property (nonatomic, assign) id<ContentViewControllerDelegate> delegate;
+
+//-(void)goForwardOneDay;
+//-(void)goBackOneDay;
 
 @end

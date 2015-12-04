@@ -7,17 +7,11 @@
 //
 
 #import "ContentViewController.h"
+#import "StatsTableViewCell.h"
 
-@interface ContentViewController () {
+@interface ContentViewController ()
 
-    NSDate *previousDay;
-    NSDate *nextDay;
-    NSDateFormatter *dateFormatter;
-    NSTimeInterval oneDay;
-    int secondsInDay;
-
-}
-
+@property StatsTableViewCell *statsCell;
 
 @end
 
@@ -25,17 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.date = [NSDate new];
     NSLocale *currentLocale = [NSLocale currentLocale];
     [self.date descriptionWithLocale:currentLocale];
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"MMMM dd, yyyy"];
 
-    secondsInDay = 24 * 60 * 60;
-    oneDay = secondsInDay;
+    self.secondsInDay = 24 * 60 * 60;
+    self.oneDay = self.secondsInDay;
 
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:self.date]];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",[self.dateFormatter stringFromDate:self.date]];
 
     self.arrayForBool = [[NSMutableArray alloc]init];
     self.sectionTitleArray = [[NSMutableArray alloc]initWithObjects: @"Game 1", @"Game 2", @"Game 3", @"Game 4", @"Game 5", @"Game 6", @"Game 7", @"Game 8", nil];
@@ -46,11 +40,12 @@
 
     self.expandableTableView.dataSource = self;
     self.expandableTableView.delegate = self;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([[self.arrayForBool objectAtIndex:section] boolValue]) {
-        return section + 2;
+        return 20;
     } else {
         return 0;
     }
@@ -58,50 +53,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-//    static NSString *cellid;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid"];
 
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellid"];
-    }
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid"];
 
-    BOOL manyCells  = [[self.arrayForBool objectAtIndex:indexPath.section] boolValue];
+    self.statsCell = [StatsTableViewCell new];
+    self.statsCell = [tableView dequeueReusableCellWithIdentifier:@"StatsCellID" forIndexPath:indexPath];
 
-    //closed
-    if(!manyCells)
-    {
-        cell.backgroundColor=[UIColor clearColor];
-        cell.textLabel.text=@"";
-    }
-    //opened
-    else
-    {
-        cell.textLabel.text=[NSString stringWithFormat:@"%@ Statline:%ld",[self.sectionTitleArray objectAtIndex:indexPath.section],indexPath.row + 1];
-        cell.textLabel.font=[UIFont systemFontOfSize:15.0f];
-        cell.backgroundColor=[UIColor whiteColor];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone ;
-    }
-    cell.textLabel.textColor=[UIColor blackColor];
+//    if (cell == nil) {
+//
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellid"];
+//    }
 
-    return cell;
+//    cell.textLabel.text=[NSString stringWithFormat:@"%@ Statline:%d",[self.sectionTitleArray objectAtIndex:indexPath.section],indexPath.row + 1];
+//    cell.textLabel.font=[UIFont systemFontOfSize:15.0f];
+//    cell.backgroundColor=[UIColor whiteColor];
+//    cell.selectionStyle=UITableViewCellSelectionStyleNone ;
+//    cell.textLabel.textColor=[UIColor blackColor];
+
+    self.statsCell.playerNameLabel.text = @"Test Player";
+
+//    return cell;
+    return self.statsCell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sectionTitleArray.count;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // Close section
-    [self.arrayForBool replaceObjectAtIndex:indexPath.section withObject:[NSNumber numberWithBool:NO]];
-
-    [self.expandableTableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if ([[self.arrayForBool objectAtIndex:indexPath.section] boolValue]) {
-        return 60;
+        return 30;
     }
     return 0;
 }
@@ -150,20 +132,31 @@
 
 - (IBAction)onLeftArrowPressed:(id)sender {
 
-    previousDay = [NSDate dateWithTimeInterval:-oneDay sinceDate:self.date];
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:previousDay]];
-    self.date = previousDay;
-    oneDay++;
+    [self goBackOneDay];
 }
 
 - (IBAction)onRightArrowPressed:(id)sender {
-    nextDay = [NSDate dateWithTimeInterval:oneDay sinceDate:self.date];
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:nextDay]];
-    self.date = nextDay;
-    oneDay++;
+
+    [self goForwardOneDay];
 }
 
 - (IBAction)onCalendarButtonPressed:(id)sender {
+}
+
+- (void)goForwardOneDay {
+
+    self.nextDay = [NSDate dateWithTimeInterval:self.oneDay sinceDate:self.date];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",[self.dateFormatter stringFromDate:self.nextDay]];
+    self.date = self.nextDay;
+    self.oneDay++;
+}
+
+-(void)goBackOneDay {
+
+    self.previousDay = [NSDate dateWithTimeInterval:-self.oneDay sinceDate:self.date];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",[self.dateFormatter stringFromDate:self.previousDay]];
+    self.date = self.previousDay;
+    self.oneDay++;
 }
 
 

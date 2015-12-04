@@ -17,6 +17,7 @@
 		17B7A7291C0CF65B0061050A /* NBABoxScoresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7281C0CF65B0061050A /* NBABoxScoresTests.m */; };
 		17B7A7341C0CF65B0061050A /* NBABoxScoresUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7331C0CF65B0061050A /* NBABoxScoresUITests.m */; };
 		17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* ContentViewController.m */; };
+		17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7871C1251BE0061050A /* StatsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		17B7A7351C0CF65B0061050A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B7A7411C0F5F6B0061050A /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		17B7A7421C0F5F6B0061050A /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		17B7A7861C1251BE0061050A /* StatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewCell.h; sourceTree = "<group>"; };
+		17B7A7871C1251BE0061050A /* StatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				17B7A7121C0CF65B0061050A /* ViewController.m */,
 				17B7A7411C0F5F6B0061050A /* ContentViewController.h */,
 				17B7A7421C0F5F6B0061050A /* ContentViewController.m */,
+				17B7A7861C1251BE0061050A /* StatsTableViewCell.h */,
+				17B7A7871C1251BE0061050A /* StatsTableViewCell.m */,
 				17B7A70B1C0CF65B0061050A /* Supporting Files */,
 			);
 			path = NBABoxScores;
@@ -283,6 +288,7 @@
 				17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */,
 				17B7A7191C0CF65B0061050A /* NBABoxScores.xcdatamodeld in Sources */,
 				17B7A70D1C0CF65B0061050A /* main.m in Sources */,
+				17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
