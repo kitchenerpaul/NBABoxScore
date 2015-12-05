@@ -9,9 +9,10 @@
 #import "ContentViewController.h"
 #import "StatsTableViewCell.h"
 
-@interface ContentViewController ()
+@interface ContentViewController () <UIScrollViewDelegate>
 
 @property StatsTableViewCell *statsCell;
+@property UIScrollView *scrollView;
 
 @end
 
@@ -53,26 +54,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid"];
-
     self.statsCell = [StatsTableViewCell new];
     self.statsCell = [tableView dequeueReusableCellWithIdentifier:@"StatsCellID" forIndexPath:indexPath];
 
-//    if (cell == nil) {
-//
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellid"];
-//    }
-
-//    cell.textLabel.text=[NSString stringWithFormat:@"%@ Statline:%d",[self.sectionTitleArray objectAtIndex:indexPath.section],indexPath.row + 1];
-//    cell.textLabel.font=[UIFont systemFontOfSize:15.0f];
-//    cell.backgroundColor=[UIColor whiteColor];
-//    cell.selectionStyle=UITableViewCellSelectionStyleNone ;
-//    cell.textLabel.textColor=[UIColor blackColor];
-
     self.statsCell.playerNameLabel.text = @"Test Player";
 
-//    return cell;
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.statsCell.frame];
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.delegate = self;
+    [self.scrollView setUserInteractionEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(1000, 23)];
+    [self.statsCell.contentView addSubview:self.scrollView];
+
     return self.statsCell;
 }
 
@@ -80,31 +73,23 @@
     return self.sectionTitleArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    if ([[self.arrayForBool objectAtIndex:indexPath.section] boolValue]) {
-        return 30;
-    }
-    return 0;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 60;
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 60)];
+    UIView *sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 40)];
     sectionView.tag = section;
-    UILabel *viewLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 60)];
+    UILabel *viewLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 40)];
     viewLabel.backgroundColor = [UIColor lightGrayColor];
     viewLabel.textColor = [UIColor whiteColor];
-    viewLabel.font = [UIFont systemFontOfSize:18];
+    viewLabel.font = [UIFont systemFontOfSize:15.0];
     viewLabel.textAlignment = NSTextAlignmentCenter;
     viewLabel.text = [NSString stringWithFormat:@"%@",[self.sectionTitleArray objectAtIndex:section]];
     [sectionView addSubview:viewLabel];
 
-    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 59.5, self.view.frame.size.width, 0.5)];
+    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39.5, self.view.frame.size.width, 0.5)];
     separatorLineView.backgroundColor = [UIColor whiteColor];
     separatorLineView.alpha = 0.5f;
     [sectionView addSubview:separatorLineView];
@@ -142,6 +127,20 @@
 
 - (IBAction)onCalendarButtonPressed:(id)sender {
 }
+
+//-(void)scrollForCell:(UITableViewCell *)cell {
+//
+//    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, self.expandableTableView.frame.size.width, cell.frame.size.height)];
+////    [self.scrollView bringSubviewToFront:self.scrollView];
+//    self.scrollView.backgroundColor = [UIColor redColor];
+//    self.scrollView.scrollEnabled = YES;
+//    self.scrollView.delegate = self;
+//    [self.scrollView setUserInteractionEnabled:YES];
+//    [self.scrollView setContentSize:CGSizeMake(cell.frame.origin.x + 500, cell.frame.origin.y)];
+//    [cell.contentView addSubview:self.scrollView];
+//
+//    frame = (0 200; 375 23);
+//}
 
 - (void)goForwardOneDay {
 

@@ -32,7 +32,4 @@
 @property int secondsInDay;
 @property (nonatomic, assign) id<ContentViewControllerDelegate> delegate;
 
-//-(void)goForwardOneDay;
-//-(void)goBackOneDay;
-
 @end

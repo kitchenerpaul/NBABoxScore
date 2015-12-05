@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fgmaLabel;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
