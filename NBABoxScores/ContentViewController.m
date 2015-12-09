@@ -59,12 +59,16 @@
 
     self.statsCell.playerNameLabel.text = @"Test Player";
 
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.statsCell.frame];
-    self.scrollView.scrollEnabled = YES;
-    self.scrollView.delegate = self;
-    [self.scrollView setUserInteractionEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(1000, 23)];
-    [self.statsCell.contentView addSubview:self.scrollView];
+    [self.statsCell.contentView setFrame:CGRectMake(0, 0, 1000, 23)];
+
+//    self.scrollView = [[UIScrollView alloc] initWithFrame:self.statsCell.frame];
+//    self.statsCell.frame = self.scrollView.frame;
+//    self.scrollView.scrollEnabled = YES;
+//    self.scrollView.delegate = self;
+//    [self.scrollView setUserInteractionEnabled:YES];
+//    [self.scrollView setContentSize:CGSizeMake(1000, 23)];
+//    [self.scrollView addSubview:self.statsCell.contentView];
+//    [self.statsCell.contentView addSubview:self.scrollView];
 
     return self.statsCell;
 }
