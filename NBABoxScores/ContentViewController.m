@@ -8,11 +8,22 @@
 
 #import "ContentViewController.h"
 #import "StatsTableViewCell.h"
+#import "StatsLayout.h"
+#import "PlayerCollectionViewCell.h"
+#import "StatsCollectionViewCell.h"
+#import "StatsCollectionView.h"
 
-@interface ContentViewController () <UIScrollViewDelegate>
+@interface ContentViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property StatsTableViewCell *statsCell;
-@property UIScrollView *scrollView;
+
+@property StatsCollectionView *statsCollectionView;
+
+
+
+@property PlayerCollectionViewCell *playerCell;
+@property StatsCollectionViewCell *statsCollectionCell;
+@property StatsLayout *statsLayout;
 
 @end
 
@@ -20,7 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+//    self.statsCollectionView = [StatsCollectionView new];
+//    NSLog(@"SCV height: %f", self.statsCollectionView.bounds.size.height);
+
     self.date = [NSDate new];
     NSLocale *currentLocale = [NSLocale currentLocale];
     [self.date descriptionWithLocale:currentLocale];
@@ -33,7 +47,7 @@
     self.dateLabel.text = [NSString stringWithFormat:@"%@",[self.dateFormatter stringFromDate:self.date]];
 
     self.arrayForBool = [[NSMutableArray alloc]init];
-    self.sectionTitleArray = [[NSMutableArray alloc]initWithObjects: @"Game 1", @"Game 2", @"Game 3", @"Game 4", @"Game 5", @"Game 6", @"Game 7", @"Game 8", nil];
+    self.sectionTitleArray = [[NSMutableArray alloc]initWithObjects: @"GAME 1", @"GAME 2", @"GAME 3", @"GAME 4", @"GAME 5", @"GAME 6", @"GAME 7", @"GAME 8", nil];
 
     for (int i = 0; i < self.sectionTitleArray.count; i++) {
         [self.arrayForBool addObject:[NSNumber numberWithBool:NO]];
@@ -46,7 +60,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([[self.arrayForBool objectAtIndex:section] boolValue]) {
-        return 20;
+        return 1;
     } else {
         return 0;
     }
@@ -56,19 +70,6 @@
 
     self.statsCell = [StatsTableViewCell new];
     self.statsCell = [tableView dequeueReusableCellWithIdentifier:@"StatsCellID" forIndexPath:indexPath];
-
-    self.statsCell.playerNameLabel.text = @"Test Player";
-
-    [self.statsCell.contentView setFrame:CGRectMake(0, 0, 1000, 23)];
-
-//    self.scrollView = [[UIScrollView alloc] initWithFrame:self.statsCell.frame];
-//    self.statsCell.frame = self.scrollView.frame;
-//    self.scrollView.scrollEnabled = YES;
-//    self.scrollView.delegate = self;
-//    [self.scrollView setUserInteractionEnabled:YES];
-//    [self.scrollView setContentSize:CGSizeMake(1000, 23)];
-//    [self.scrollView addSubview:self.statsCell.contentView];
-//    [self.statsCell.contentView addSubview:self.scrollView];
 
     return self.statsCell;
 }
@@ -88,7 +89,8 @@
     UILabel *viewLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 40)];
     viewLabel.backgroundColor = [UIColor lightGrayColor];
     viewLabel.textColor = [UIColor whiteColor];
-    viewLabel.font = [UIFont systemFontOfSize:15.0];
+//    viewLabel.font = [UIFont systemFontOfSize:15.0];
+    viewLabel.font = [UIFont boldSystemFontOfSize:13.0];
     viewLabel.textAlignment = NSTextAlignmentCenter;
     viewLabel.text = [NSString stringWithFormat:@"%@",[self.sectionTitleArray objectAtIndex:section]];
     [sectionView addSubview:viewLabel];
@@ -132,20 +134,6 @@
 - (IBAction)onCalendarButtonPressed:(id)sender {
 }
 
-//-(void)scrollForCell:(UITableViewCell *)cell {
-//
-//    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, self.expandableTableView.frame.size.width, cell.frame.size.height)];
-////    [self.scrollView bringSubviewToFront:self.scrollView];
-//    self.scrollView.backgroundColor = [UIColor redColor];
-//    self.scrollView.scrollEnabled = YES;
-//    self.scrollView.delegate = self;
-//    [self.scrollView setUserInteractionEnabled:YES];
-//    [self.scrollView setContentSize:CGSizeMake(cell.frame.origin.x + 500, cell.frame.origin.y)];
-//    [cell.contentView addSubview:self.scrollView];
-//
-//    frame = (0 200; 375 23);
-//}
-
 - (void)goForwardOneDay {
 
     self.nextDay = [NSDate dateWithTimeInterval:self.oneDay sinceDate:self.date];
@@ -161,6 +149,83 @@
     self.date = self.previousDay;
     self.oneDay++;
 }
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+    return 15;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 15;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
+            self.playerCell.backgroundColor = [UIColor colorWithRed:.1 green:.3 blue:.5 alpha:1];
+            self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:11.0];
+            self.playerCell.playerNameLabel.textColor = [UIColor whiteColor];
+            self.playerCell.playerNameLabel.text = @"Team";
+            self.playerCell.separatorView.hidden = YES;
+            self.playerCell.bottomSeparatorView.hidden = YES;
+
+            return self.playerCell;
+
+        } else {
+            self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
+            self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:11.0];
+            self.statsCollectionCell.statsLabel.textColor = [UIColor darkGrayColor];
+            self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"Stat%li", (long)indexPath.row];
+            self.statsCollectionCell.separatorView.backgroundColor = [UIColor whiteColor];
+            self.statsCollectionCell.backgroundColor = [UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
+            self.statsCollectionCell.bottomSeparatorView.hidden = YES;
+
+            return self.statsCollectionCell;
+        }
+
+    } else {
+        if (indexPath.row == 0) {
+
+            self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
+            self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:9.5];
+            self.playerCell.playerNameLabel.textColor = [UIColor blackColor];
+            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"Player %li", (long)indexPath.section];
+            if (indexPath.section %2 != 0) {
+                self.playerCell.backgroundColor = [UIColor whiteColor];
+            } else {
+                self.playerCell.backgroundColor = [UIColor whiteColor];
+            }
+
+            return self.playerCell;
+
+        } else {
+
+            self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
+            self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:9.5];
+            self.statsCollectionCell.statsLabel.textColor = [UIColor blackColor];
+            self.statsCollectionCell.statsLabel.text = @"Number";
+
+            if (indexPath.section % 2 != 0) {
+                self.statsCollectionCell.backgroundColor = [UIColor whiteColor];
+            } else {
+                self.statsCollectionCell.backgroundColor = [UIColor whiteColor];
+            }
+
+            return self.statsCollectionCell;
+        }
+    }
+
+}
+
+//- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths {
+//    BOOL animationsEnabled = [UIView areAnimationsEnabled];
+//    [UIView setAnimationsEnabled:NO];
+//    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+//    [UIView setAnimationsEnabled:animationsEnabled];
+//    
+//}
 
 
 @end

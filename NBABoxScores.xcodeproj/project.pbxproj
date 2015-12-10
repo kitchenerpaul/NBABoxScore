@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17AF6D181C18E0EC00111AEA /* StatsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D171C18E0EC00111AEA /* StatsLayout.m */; };
+		17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */; };
+		17AF6D1F1C18E31C00111AEA /* StatsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */; };
+		17AF6D221C18F7A400111AEA /* StatsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D211C18F7A400111AEA /* StatsCollectionView.m */; };
 		17B7A70D1C0CF65B0061050A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A70C1C0CF65B0061050A /* main.m */; };
 		17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A70F1C0CF65B0061050A /* AppDelegate.m */; };
 		17B7A7131C0CF65B0061050A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7121C0CF65B0061050A /* ViewController.m */; };
@@ -38,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17AF6D161C18E0EC00111AEA /* StatsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsLayout.h; sourceTree = "<group>"; };
+		17AF6D171C18E0EC00111AEA /* StatsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsLayout.m; sourceTree = "<group>"; };
+		17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCollectionViewCell.h; sourceTree = "<group>"; };
+		17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCollectionViewCell.m; sourceTree = "<group>"; };
+		17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCollectionViewCell.h; sourceTree = "<group>"; };
+		17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCollectionViewCell.m; sourceTree = "<group>"; };
+		17AF6D201C18F7A400111AEA /* StatsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCollectionView.h; sourceTree = "<group>"; };
+		17AF6D211C18F7A400111AEA /* StatsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCollectionView.m; sourceTree = "<group>"; };
 		17B7A7081C0CF65B0061050A /* NBABoxScores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBABoxScores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B7A70C1C0CF65B0061050A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17B7A70E1C0CF65B0061050A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,6 +98,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17AF6D191C18E10000111AEA /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				17AF6D161C18E0EC00111AEA /* StatsLayout.h */,
+				17AF6D171C18E0EC00111AEA /* StatsLayout.m */,
+				17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */,
+				17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */,
+				17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */,
+				17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */,
+				17AF6D201C18F7A400111AEA /* StatsCollectionView.h */,
+				17AF6D211C18F7A400111AEA /* StatsCollectionView.m */,
+			);
+			name = CollectionView;
+			sourceTree = "<group>";
+		};
 		17B7A6FF1C0CF65B0061050A = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +143,7 @@
 				17B7A7421C0F5F6B0061050A /* ContentViewController.m */,
 				17B7A7861C1251BE0061050A /* StatsTableViewCell.h */,
 				17B7A7871C1251BE0061050A /* StatsTableViewCell.m */,
+				17AF6D191C18E10000111AEA /* CollectionView */,
 				17B7A70B1C0CF65B0061050A /* Supporting Files */,
 			);
 			path = NBABoxScores;
@@ -284,9 +312,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B7A7131C0CF65B0061050A /* ViewController.m in Sources */,
+				17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */,
+				17AF6D221C18F7A400111AEA /* StatsCollectionView.m in Sources */,
 				17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */,
+				17AF6D1F1C18E31C00111AEA /* StatsCollectionViewCell.m in Sources */,
 				17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */,
 				17B7A7191C0CF65B0061050A /* NBABoxScores.xcdatamodeld in Sources */,
+				17AF6D181C18E0EC00111AEA /* StatsLayout.m in Sources */,
 				17B7A70D1C0CF65B0061050A /* main.m in Sources */,
 				17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */,
 			);
@@ -514,6 +546,7 @@
 				17B7A73A1C0CF65B0061050A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17B7A73B1C0CF65B0061050A /* Build configuration list for PBXNativeTarget "NBABoxScoresTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +555,7 @@
 				17B7A73D1C0CF65B0061050A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17B7A73E1C0CF65B0061050A /* Build configuration list for PBXNativeTarget "NBABoxScoresUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +564,7 @@
 				17B7A7401C0CF65B0061050A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
