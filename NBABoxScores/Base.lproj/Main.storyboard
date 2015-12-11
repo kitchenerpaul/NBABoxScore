@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -235,7 +236,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hxh-i0-eLr" id="FL6-bM-F37">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JWN-It-8ey" customClass="StatsCollectionView">
@@ -318,12 +319,12 @@
                                                                 <mask key="constraints">
                                                                     <exclude reference="Sqm-ek-Lui"/>
                                                                     <exclude reference="wUX-ra-IiL"/>
-                                                                    <exclude reference="2Cg-0k-JdN"/>
-                                                                    <exclude reference="Re1-Rh-KhS"/>
-                                                                    <exclude reference="qmi-bM-nWN"/>
                                                                     <exclude reference="02s-3H-ul4"/>
                                                                     <exclude reference="GGY-Ft-XcZ"/>
                                                                     <exclude reference="Y7m-QM-buI"/>
+                                                                    <exclude reference="2Cg-0k-JdN"/>
+                                                                    <exclude reference="Re1-Rh-KhS"/>
+                                                                    <exclude reference="qmi-bM-nWN"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="widthClass=compact">
@@ -335,12 +336,12 @@
                                                                 <mask key="constraints">
                                                                     <include reference="Sqm-ek-Lui"/>
                                                                     <include reference="wUX-ra-IiL"/>
-                                                                    <include reference="2Cg-0k-JdN"/>
-                                                                    <include reference="Re1-Rh-KhS"/>
-                                                                    <include reference="qmi-bM-nWN"/>
                                                                     <include reference="02s-3H-ul4"/>
                                                                     <include reference="GGY-Ft-XcZ"/>
                                                                     <include reference="Y7m-QM-buI"/>
+                                                                    <include reference="2Cg-0k-JdN"/>
+                                                                    <include reference="Re1-Rh-KhS"/>
+                                                                    <include reference="qmi-bM-nWN"/>
                                                                 </mask>
                                                             </variation>
                                                             <connections>
@@ -423,12 +424,12 @@
                                                                 <mask key="constraints">
                                                                     <exclude reference="i1Y-Ua-H1n"/>
                                                                     <exclude reference="v0X-hM-CoE"/>
-                                                                    <exclude reference="QfF-FB-d1H"/>
-                                                                    <exclude reference="dMg-fc-mx9"/>
-                                                                    <exclude reference="myL-V4-Cu5"/>
                                                                     <exclude reference="Pq0-VL-gsC"/>
                                                                     <exclude reference="Yut-En-szx"/>
                                                                     <exclude reference="wQE-G3-5WS"/>
+                                                                    <exclude reference="QfF-FB-d1H"/>
+                                                                    <exclude reference="dMg-fc-mx9"/>
+                                                                    <exclude reference="myL-V4-Cu5"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="widthClass=compact">
@@ -440,12 +441,12 @@
                                                                 <mask key="constraints">
                                                                     <include reference="i1Y-Ua-H1n"/>
                                                                     <include reference="v0X-hM-CoE"/>
-                                                                    <include reference="QfF-FB-d1H"/>
-                                                                    <include reference="dMg-fc-mx9"/>
-                                                                    <include reference="myL-V4-Cu5"/>
                                                                     <include reference="Pq0-VL-gsC"/>
                                                                     <include reference="Yut-En-szx"/>
                                                                     <include reference="wQE-G3-5WS"/>
+                                                                    <include reference="QfF-FB-d1H"/>
+                                                                    <include reference="dMg-fc-mx9"/>
+                                                                    <include reference="myL-V4-Cu5"/>
                                                                 </mask>
                                                             </variation>
                                                             <connections>

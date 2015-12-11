@@ -7,19 +7,30 @@
 //
 
 #import "StatsLayout.h"
+#import "Game.h"
 
-#define NUMBEROFCOLUMNS 15
+//#define NUMBEROFCOLUMNS 
 
 @interface StatsLayout ()
 @property (strong, nonatomic) NSMutableArray *itemAttributes;
 @property (strong, nonatomic) NSMutableArray *itemsSize;
 @property (nonatomic, assign) CGSize contentSize;
+
+@property Game *game;
 @end
 
 @implementation StatsLayout
 
 - (void)prepareLayout
 {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"game" ofType:@"json"];
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
+
+    NSError *error = nil;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+
+    self.game = [[Game alloc] initWithDictionary:jsonDict];
+    
     if (self.collectionView.numberOfSections == 0) {
         return;
     }
@@ -63,14 +74,14 @@
     // NSUInteger numberOfItems = [self.collectionView numberOfItemsInSection:section];
 
     // We calculate the item size of each column
-    if (self.itemsSize.count != NUMBEROFCOLUMNS) {
+    if (self.itemsSize.count != self.game.statsDictionary.count + 1) {
         [self calculateItemsSize];
     }
 
     // We loop through all items
     for (int section = 0; section < [self.collectionView numberOfSections]; section++) {
         NSMutableArray *sectionAttributes = [@[] mutableCopy];
-        for (NSUInteger index = 0; index < NUMBEROFCOLUMNS; index++) {
+        for (NSUInteger index = 0; index < self.game.statsDictionary.count + 1; index++) {
             CGSize itemSize = [self.itemsSize[index] CGSizeValue];
 
             // We create the UICollectionViewLayoutAttributes object for each item and add it to our array.
@@ -101,7 +112,7 @@
             column++;
 
             // Create a new row if this was the last column
-            if (column == NUMBEROFCOLUMNS) {
+            if (column == self.game.statsDictionary.count + 1) {
                 if (xOffset > contentWidth) {
                     contentWidth = xOffset;
                 }
@@ -211,7 +222,7 @@
 
 - (void)calculateItemsSize
 {
-    for (NSUInteger index = 0; index < NUMBEROFCOLUMNS; index++) {
+    for (NSUInteger index = 0; index < self.game.statsDictionary.count + 1; index++) {
         if (self.itemsSize.count <= index) {
             CGSize itemSize = [self sizeForItemWithColumnIndex:index];
             NSValue *itemSizeValue = [NSValue valueWithCGSize:itemSize];

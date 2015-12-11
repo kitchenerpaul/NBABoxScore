@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171FB2341C1A1CA500EAC81E /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 171FB2331C1A1CA500EAC81E /* Game.m */; };
+		171FB23C1C1B628B00EAC81E /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 171FB23B1C1B628B00EAC81E /* game.json */; };
 		17AF6D181C18E0EC00111AEA /* StatsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D171C18E0EC00111AEA /* StatsLayout.m */; };
 		17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */; };
 		17AF6D1F1C18E31C00111AEA /* StatsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */; };
@@ -42,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171FB2321C1A1CA500EAC81E /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		171FB2331C1A1CA500EAC81E /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		171FB23B1C1B628B00EAC81E /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 		17AF6D161C18E0EC00111AEA /* StatsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsLayout.h; sourceTree = "<group>"; };
 		17AF6D171C18E0EC00111AEA /* StatsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsLayout.m; sourceTree = "<group>"; };
 		17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCollectionViewCell.h; sourceTree = "<group>"; };
@@ -98,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		171FB2311C1A1C5800EAC81E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				171FB2321C1A1CA500EAC81E /* Game.h */,
+				171FB2331C1A1CA500EAC81E /* Game.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		17AF6D191C18E10000111AEA /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +157,7 @@
 				17B7A7421C0F5F6B0061050A /* ContentViewController.m */,
 				17B7A7861C1251BE0061050A /* StatsTableViewCell.h */,
 				17B7A7871C1251BE0061050A /* StatsTableViewCell.m */,
+				171FB2311C1A1C5800EAC81E /* Models */,
 				17AF6D191C18E10000111AEA /* CollectionView */,
 				17B7A70B1C0CF65B0061050A /* Supporting Files */,
 			);
@@ -156,6 +171,7 @@
 				17B7A70F1C0CF65B0061050A /* AppDelegate.m */,
 				17B7A71A1C0CF65B0061050A /* Assets.xcassets */,
 				17B7A71C1C0CF65B0061050A /* LaunchScreen.storyboard */,
+				171FB23B1C1B628B00EAC81E /* game.json */,
 				17B7A71F1C0CF65B0061050A /* Info.plist */,
 				17B7A7171C0CF65B0061050A /* NBABoxScores.xcdatamodeld */,
 				17B7A70C1C0CF65B0061050A /* main.m */,
@@ -287,6 +303,7 @@
 				17B7A71E1C0CF65B0061050A /* LaunchScreen.storyboard in Resources */,
 				17B7A71B1C0CF65B0061050A /* Assets.xcassets in Resources */,
 				17B7A7161C0CF65B0061050A /* Main.storyboard in Resources */,
+				171FB23C1C1B628B00EAC81E /* game.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B7A7131C0CF65B0061050A /* ViewController.m in Sources */,
+				171FB2341C1A1CA500EAC81E /* Game.m in Sources */,
 				17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */,
 				17AF6D221C18F7A400111AEA /* StatsCollectionView.m in Sources */,
 				17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */,

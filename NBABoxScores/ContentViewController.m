@@ -12,6 +12,7 @@
 #import "PlayerCollectionViewCell.h"
 #import "StatsCollectionViewCell.h"
 #import "StatsCollectionView.h"
+#import "Game.h"
 
 @interface ContentViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -19,11 +20,16 @@
 
 @property StatsCollectionView *statsCollectionView;
 
-
-
 @property PlayerCollectionViewCell *playerCell;
 @property StatsCollectionViewCell *statsCollectionCell;
 @property StatsLayout *statsLayout;
+
+@property Game *game;
+
+@property NSMutableArray *statTitlesArray;
+
+
+
 
 @end
 
@@ -32,8 +38,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.statsCollectionView = [StatsCollectionView new];
-//    NSLog(@"SCV height: %f", self.statsCollectionView.bounds.size.height);
+    /////// Game JSON
+
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"game" ofType:@"json"];
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
+
+    NSError *error = nil;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+
+    self.game = [[Game alloc] initWithDictionary:jsonDict];
+
+    // Date & Time Related
 
     self.date = [NSDate new];
     NSLocale *currentLocale = [NSLocale currentLocale];
@@ -89,10 +104,9 @@
     UILabel *viewLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.expandableTableView.frame.size.width, 40)];
     viewLabel.backgroundColor = [UIColor lightGrayColor];
     viewLabel.textColor = [UIColor whiteColor];
-//    viewLabel.font = [UIFont systemFontOfSize:15.0];
     viewLabel.font = [UIFont boldSystemFontOfSize:13.0];
     viewLabel.textAlignment = NSTextAlignmentCenter;
-    viewLabel.text = [NSString stringWithFormat:@"%@",[self.sectionTitleArray objectAtIndex:section]];
+    viewLabel.text = [NSString stringWithFormat:@"%@ VS Away Team",self.game.homeTeamName];
     [sectionView addSubview:viewLabel];
 
     UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39.5, self.view.frame.size.width, 0.5)];
@@ -119,7 +133,6 @@
         [self.expandableTableView reloadSections:[NSIndexSet indexSetWithIndex:gestureRecognizer.view.tag] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
-
 
 - (IBAction)onLeftArrowPressed:(id)sender {
 
@@ -151,12 +164,11 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
-    return 15;
+    return self.game.statsDictionary.count + 1;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 15;
+    return self.game.homePlayers.count + 1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,9 +177,9 @@
         if (indexPath.row == 0) {
             self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
             self.playerCell.backgroundColor = [UIColor colorWithRed:.1 green:.3 blue:.5 alpha:1];
-            self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:11.0];
+            self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:12.0];
             self.playerCell.playerNameLabel.textColor = [UIColor whiteColor];
-            self.playerCell.playerNameLabel.text = @"Team";
+            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
             self.playerCell.separatorView.hidden = YES;
             self.playerCell.bottomSeparatorView.hidden = YES;
 
@@ -175,9 +187,17 @@
 
         } else {
             self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
+
+            self.statTitlesArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+            NSArray *tempArray = [self.game.statsDictionary allKeys];
+            [self.statTitlesArray addObjectsFromArray:tempArray];
+            self.statsCollectionCell.statsLabel.text = [self.statTitlesArray objectAtIndex:indexPath.row];
+
+            NSLog(@"Stat Titles: %@", self.statTitlesArray);
+
+
             self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:11.0];
             self.statsCollectionCell.statsLabel.textColor = [UIColor darkGrayColor];
-            self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"Stat%li", (long)indexPath.row];
             self.statsCollectionCell.separatorView.backgroundColor = [UIColor whiteColor];
             self.statsCollectionCell.backgroundColor = [UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
             self.statsCollectionCell.bottomSeparatorView.hidden = YES;
@@ -189,43 +209,38 @@
         if (indexPath.row == 0) {
 
             self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
+
+            NSMutableArray *tempHomePlayersArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+            [tempHomePlayersArray addObjectsFromArray:self.game.homePlayers];
+            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", [tempHomePlayersArray objectAtIndex:indexPath.section]];
+
             self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:9.5];
             self.playerCell.playerNameLabel.textColor = [UIColor blackColor];
-            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"Player %li", (long)indexPath.section];
-            if (indexPath.section %2 != 0) {
-                self.playerCell.backgroundColor = [UIColor whiteColor];
-            } else {
-                self.playerCell.backgroundColor = [UIColor whiteColor];
-            }
+            self.playerCell.backgroundColor = [UIColor whiteColor];
 
             return self.playerCell;
 
         } else {
 
             self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
+
+            if (indexPath.row == 1) {
+                    self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.minutesArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 2) {
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.pointsArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 3) {
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.fgmaArray objectAtIndex:indexPath.section]];
+            }
+
+
+
             self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:9.5];
             self.statsCollectionCell.statsLabel.textColor = [UIColor blackColor];
-            self.statsCollectionCell.statsLabel.text = @"Number";
-
-            if (indexPath.section % 2 != 0) {
-                self.statsCollectionCell.backgroundColor = [UIColor whiteColor];
-            } else {
-                self.statsCollectionCell.backgroundColor = [UIColor whiteColor];
-            }
+            self.statsCollectionCell.backgroundColor = [UIColor whiteColor];
 
             return self.statsCollectionCell;
         }
     }
-
 }
-
-//- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths {
-//    BOOL animationsEnabled = [UIView areAnimationsEnabled];
-//    [UIView setAnimationsEnabled:NO];
-//    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
-//    [UIView setAnimationsEnabled:animationsEnabled];
-//    
-//}
-
 
 @end
