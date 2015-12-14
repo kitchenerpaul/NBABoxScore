@@ -28,6 +28,8 @@
 
 @property NSMutableArray *statTitlesArray;
 
+@property NSInteger gameSection;
+
 
 
 
@@ -75,6 +77,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     if ([[self.arrayForBool objectAtIndex:section] boolValue]) {
         return 1;
     } else {
@@ -128,6 +131,8 @@
     UITapGestureRecognizer *headerTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderTapped:)];
     [sectionView addGestureRecognizer:headerTapped];
 
+    self.gameSection = section;
+
     return sectionView;
 }
 
@@ -147,12 +152,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-//    if(indexPath.section == yourSection && indexPath.row == yourRow) {
-//        return 150.0;
-//    }
-//    // "Else"
-//    return someDefaultHeight;
-//    return self.statsCollectionView.frame.size.height;
     return 610;
 }
 
@@ -195,13 +194,26 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
+    NSMutableArray *tempHomePlayersArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
             self.playerCell.backgroundColor = [UIColor colorWithRed:.1 green:.3 blue:.5 alpha:1];
             self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:12.0];
             self.playerCell.playerNameLabel.textColor = [UIColor whiteColor];
-            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
+
+            for (int i = 0; i < self.game.games.count; i++) {
+                if (self.gameSection == i) {
+
+                    NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                    self.game.homeTeamName = [homeDict objectForKey:@"Team Name"];
+
+                    self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
+                }
+            }
+
+//            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
             self.playerCell.separatorView.hidden = YES;
             self.playerCell.bottomSeparatorView.hidden = YES;
 
@@ -227,9 +239,21 @@
 
             self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
 
-            NSMutableArray *tempHomePlayersArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-            [tempHomePlayersArray addObjectsFromArray:self.game.homePlayers];
-            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", [tempHomePlayersArray objectAtIndex:indexPath.section]];
+            for (int i = 0; i < self.game.games.count; i++) {
+                if (self.gameSection == i) {
+
+                    NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                    self.game.homePlayers = [homeDict objectForKey:@"Players"];
+
+                    [tempHomePlayersArray addObjectsFromArray:self.game.homePlayers];
+                    self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", [tempHomePlayersArray objectAtIndex:indexPath.section]];
+
+                }
+            }
+
+//            NSMutableArray *tempHomePlayersArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+//            [tempHomePlayersArray addObjectsFromArray:self.game.homePlayers];
+//            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", [tempHomePlayersArray objectAtIndex:indexPath.section]];
 
             self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:9.5];
             self.playerCell.playerNameLabel.textColor = [UIColor blackColor];
@@ -243,61 +267,185 @@
 
             if (indexPath.row == 1) {
 
-                NSMutableArray *tempMinutesArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempMinutesArray addObjectsFromArray:self.game.minutesArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempMinutesArray objectAtIndex:indexPath.section]];
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.minutesArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"MIN"];
+                        NSMutableArray *tempMinutesArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempMinutesArray addObjectsFromArray:self.game.minutesArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempMinutesArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 2) {
-                NSMutableArray *tempPointsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempPointsArray addObjectsFromArray:self.game.pointsArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPointsArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.pointsArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"PTS"];
+                        NSMutableArray *tempPointsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempPointsArray addObjectsFromArray:self.game.pointsArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPointsArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 3) {
-                NSMutableArray *tempfgmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempfgmaArray addObjectsFromArray:self.game.fgmaArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempfgmaArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.fgmaArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"FGM-A"];
+                        NSMutableArray *tempfgmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempfgmaArray addObjectsFromArray:self.game.fgmaArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempfgmaArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 4) {
-                NSMutableArray *temp3pmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [temp3pmaArray addObjectsFromArray:self.game.threepmaArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [temp3pmaArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.threepmaArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"3PM-A"];
+                        NSMutableArray *temp3pmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [temp3pmaArray addObjectsFromArray:self.game.threepmaArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [temp3pmaArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 5) {
-                NSMutableArray *tempftmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempftmaArray addObjectsFromArray:self.game.ftmaArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempftmaArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.ftmaArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"FTM-A"];
+                        NSMutableArray *tempftmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempftmaArray addObjectsFromArray:self.game.ftmaArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempftmaArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 6) {
-                NSMutableArray *tempOffRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempOffRebArray addObjectsFromArray:self.game.offRebArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempOffRebArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.offRebArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"OFF"];
+                        NSMutableArray *tempOffRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempOffRebArray addObjectsFromArray:self.game.offRebArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempOffRebArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 7) {
-                NSMutableArray *tempDefRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempDefRebArray addObjectsFromArray:self.game.defRebArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempDefRebArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.defRebArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"DEF"];
+                        NSMutableArray *tempDefRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempDefRebArray addObjectsFromArray:self.game.defRebArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempDefRebArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 8) {
-                NSMutableArray *tempTotRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempTotRebArray addObjectsFromArray:self.game.totRebArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTotRebArray objectAtIndex:indexPath.section]];
+
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.totRebArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"TOT"];
+                        NSMutableArray *tempTotRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempTotRebArray addObjectsFromArray:self.game.totRebArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTotRebArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 9) {
-                NSMutableArray *tempAssistsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempAssistsArray addObjectsFromArray:self.game.assistsArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempAssistsArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.assistsArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"AST"];
+                        NSMutableArray *tempAssistsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempAssistsArray addObjectsFromArray:self.game.assistsArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempAssistsArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 10) {
-                NSMutableArray *tempStealsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempStealsArray addObjectsFromArray:self.game.stealsArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempStealsArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.stealsArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"STL"];
+                        NSMutableArray *tempStealsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempStealsArray addObjectsFromArray:self.game.stealsArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempStealsArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 11) {
-                NSMutableArray *tempBlocksArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempBlocksArray addObjectsFromArray:self.game.blocksArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempBlocksArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.blocksArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"BLK"];
+                        NSMutableArray *tempBlocksArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempBlocksArray addObjectsFromArray:self.game.blocksArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempBlocksArray objectAtIndex:indexPath.section]];
+                    }
+                }
             } else if (indexPath.row == 12) {
-                NSMutableArray *tempTurnoversArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempTurnoversArray addObjectsFromArray:self.game.turnoversArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTurnoversArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.turnoversArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"TO"];
+                        NSMutableArray *tempTurnoversArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempTurnoversArray addObjectsFromArray:self.game.turnoversArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTurnoversArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 13) {
-                NSMutableArray *tempFoulsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempFoulsArray addObjectsFromArray:self.game.foulsArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempFoulsArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.foulsArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"PF"];
+                        NSMutableArray *tempFoulsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempFoulsArray addObjectsFromArray:self.game.foulsArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempFoulsArray objectAtIndex:indexPath.section]];
+                    }
+                }
+
             } else if (indexPath.row == 14) {
-                NSMutableArray *tempPlusMinusArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-                [tempPlusMinusArray addObjectsFromArray:self.game.plusMinusArray];
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPlusMinusArray objectAtIndex:indexPath.section]];
+
+                for (int i = 0; i < self.game.games.count; i++) {
+                    if (self.gameSection == i) {
+
+                        NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+                        self.game.plusMinusArray = [[homeDict objectForKey:@"Stats"] objectForKey:@"+/-"];
+                        NSMutableArray *tempPlusMinusArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                        [tempPlusMinusArray addObjectsFromArray:self.game.plusMinusArray];
+                        self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPlusMinusArray objectAtIndex:indexPath.section]];
+                    }
+                }
             }
 
             self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:9.5];

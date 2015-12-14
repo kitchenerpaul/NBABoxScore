@@ -23,8 +23,8 @@
 		17B7A7341C0CF65B0061050A /* NBABoxScoresUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7331C0CF65B0061050A /* NBABoxScoresUITests.m */; };
 		17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* ContentViewController.m */; };
 		17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7871C1251BE0061050A /* StatsTableViewCell.m */; };
+		17BB415D1C1F58480086514E /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 17BB415C1C1F58480086514E /* game.json */; };
 		17BEB6371C1CF83F00F2AF37 /* AwayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */; };
-		17BEB63D1C1D037900F2AF37 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 17BEB63C1C1D037900F2AF37 /* game.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +76,9 @@
 		17B7A7421C0F5F6B0061050A /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		17B7A7861C1251BE0061050A /* StatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewCell.h; sourceTree = "<group>"; };
 		17B7A7871C1251BE0061050A /* StatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewCell.m; sourceTree = "<group>"; };
+		17BB415C1C1F58480086514E /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 		17BEB6351C1CF83F00F2AF37 /* AwayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayCollectionView.h; sourceTree = "<group>"; };
 		17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayCollectionView.m; sourceTree = "<group>"; };
-		17BEB63C1C1D037900F2AF37 /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,9 +174,9 @@
 			children = (
 				17B7A70E1C0CF65B0061050A /* AppDelegate.h */,
 				17B7A70F1C0CF65B0061050A /* AppDelegate.m */,
-				17BEB63C1C1D037900F2AF37 /* game.json */,
 				17B7A71A1C0CF65B0061050A /* Assets.xcassets */,
 				17B7A71C1C0CF65B0061050A /* LaunchScreen.storyboard */,
+				17BB415C1C1F58480086514E /* game.json */,
 				17B7A71F1C0CF65B0061050A /* Info.plist */,
 				17B7A7171C0CF65B0061050A /* NBABoxScores.xcdatamodeld */,
 				17B7A70C1C0CF65B0061050A /* main.m */,
@@ -308,7 +308,7 @@
 				17B7A71E1C0CF65B0061050A /* LaunchScreen.storyboard in Resources */,
 				17B7A71B1C0CF65B0061050A /* Assets.xcassets in Resources */,
 				17B7A7161C0CF65B0061050A /* Main.storyboard in Resources */,
-				17BEB63D1C1D037900F2AF37 /* game.json in Resources */,
+				17BB415D1C1F58480086514E /* game.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

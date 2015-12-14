@@ -220,10 +220,10 @@
     }
     CGSize size = [text sizeWithAttributes: @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:15]}];
     if (columnIndex == 0) {
-        size.width += 50; // In our design the first column should be the widest one
+        size.width += 75; // In our design the first column should be the widest one
     }
 
-    return CGSizeMake([@(size.width + 20) floatValue], 20);
+    return CGSizeMake([@(size.width + 13) floatValue], 20);
 
 }
 

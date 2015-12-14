@@ -3,7 +3,7 @@
 		{
 		"Home Team" : {
 			"Team Name" : "Chicago Bulls",
-			"Players": ["Derrick Rose", "Paul Gasol", "Jimmy Butler", "Joakim Noah", "Nikola Mirotic", "Mike Dunleavy", "Taj Gibson", "Doug McDermott", "Aaron Brooks", "Tony Snell", "Bobby Portis", "Kirk Heinrich", "Cameron Bairstow", "E'Twaun Moore"],
+			"Players": ["Derrick Rose", "Pau Gasol", "Jimmy Butler", "Joakim Noah", "Nikola Mirotic", "Mike Dunleavy", "Taj Gibson", "Doug McDermott", "Aaron Brooks", "Tony Snell", "Bobby Portis", "Kirk Heinrich", "Cameron Bairstow", "E'Twaun Moore"],
 			"Stats" : {
 				"MIN": ["38", "33", "42", "22", "28", "32", "37", "27", "20", "19", "16", "14", "0", "0"],
 				"PTS": ["15", "19", "30", "2", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
@@ -46,11 +46,11 @@
 		{
 		"Home Team" : {
 			"Team Name" : "Milwaukee Bucks",
-			"Players": ["Derrick Rose", "Paul Gasol", "Jimmy Butler", "Joakim Noah", "Nikola Mirotic", "Mike Dunleavy", "Taj Gibson", "Doug McDermott", "Aaron Brooks", "Tony Snell", "Bobby Portis", "Kirk Heinrich", "Cameron Bairstow", "E'Twaun Moore"],
+			"Players": ["Giannis Antetokoumpo", "Jerryd Bayless", "Michael Carter-Williams", "Chris Copeland", "O.J. Mayo", "Khris Middleton", "John Henson", "Tyler Ennis", "Jabari Parker", "Greg Monroe", "Miles Plumlee", "Greivis Vasquez", "Rashad Vaughn", "Johnny O'Bryant"],
 			"Stats" : {
-				"MIN": ["38", "33", "42", "22", "28", "32", "37", "27", "20", "19", "16", "14", "0", "0"],
-				"PTS": ["15", "19", "30", "2", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
-				"FGM-A": ["6-16", "8-13", "12-20", "8-13", "2-5", "1-4", "6-7", "2-6", "5-8", "1-4", "0-3", "0-2", "0-0", "0-0"],
+				"MIN": ["27", "39", "12", "42", "37", "11", "9", "14", "4", "8", "2", "0", "0", "0"],
+				"PTS": ["23", "35", "22", "13", "10", "11", "9", "2", "5", "3", "0", "0", "0", "0"],
+				"FGM-A": ["3-12", "9-19", "12-20", "8-13", "2-5", "1-4", "6-7", "2-6", "5-8", "1-4", "0-3", "0-2", "0-0", "0-0"],
 				"3PM-A": ["1-3", "2-4", "4-9", "0-0", "1-2", "2-2", "0-0", "0-1", "1-2", "0-0", "0-1", "0-0", "0-0", "0-0"],
 				"FTM-A": ["3-3", "1-1", "6-8", "4-4", "1-3", "0-1", "2-3", "0-1", "0-2", "0-0", "0-0", "0-0", "0-0", "0-0"],
 				"OFF": ["1", "3", "0", "1", "0", "0", "6", "1", "0", "0", "0", "0", "0", "0"],
@@ -66,9 +66,9 @@
 		},
 		"Away Team" : {
 			"Team Name" : "Golden State Warriors",
-			"Players": ["Chris Paul", "DeAndre Jordan", "Blake Griffin", "Josh Smith", "Jamal Crawford", "Paul Pierce", "Austin Rivers", "J.J. Redick", "Wesley Johnson", "Luc Mbah A Moute", "Lance Stephenson", "Pablo Prigioni", "Cole Aldrich", "Branden Dawson"],
+			"Players": ["Steph Curry", "Klay Thompson", "Andrew Bogut", "Harrison Barnes", "Andre Igoudala", "Festus Ezeli", "Leandro Barbosa", "Shaun Livingston", "Draymond Green", "Marreese Speights", "Brandon Rush", "Ian Clark", "James McAdoo", "Jason Thompson"],
 			"Stats" : {
-			"MIN": ["35", "39", "29", "27", "17", "30", "15", "12", "9", "8", "3", "0", "0", "0"],
+			"MIN": ["39", "29", "42", "33", "14", "29", "15", "12", "9", "8", "3", "0", "0", "0"],
 			"PTS": ["21", "30", "22", "9", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
 			"FGM-A": ["5-12", "8-21", "9-19", "11-16", "1-5", "1-6", "3-7", "0-2", "3-4", "0-2", "0-1", "0-0", "0-0", "0-0"],
 			"3PM-A": ["1-2", "3-9", "4-5", "0-0", "1-2", "2-4", "0-0", "0-1", "1-2", "0-0", "0-2", "0-0", "0-0", "0-0"],
@@ -89,11 +89,11 @@
 		{
 		"Home Team" : {
 			"Team Name" : "Houston Rockets",
-			"Players": ["Derrick Rose", "Paul Gasol", "Jimmy Butler", "Joakim Noah", "Nikola Mirotic", "Mike Dunleavy", "Taj Gibson", "Doug McDermott", "Aaron Brooks", "Tony Snell", "Bobby Portis", "Kirk Heinrich", "Cameron Bairstow", "E'Twaun Moore"],
+			"Players": ["James Harden", "Trevor Ariza", "Dwight Howard", "Clint Capela", "Jason Terry", "Ty Lawson", "Patrick Beverly", "Corey Brewer", "Sam Dekker", "Terrence Jones", "Donatas Motiejunas", "Marcus Thornton", "KJ McDaniels", "Montrezl Harrell"],
 			"Stats" : {
-				"MIN": ["38", "33", "42", "22", "28", "32", "37", "27", "20", "19", "16", "14", "0", "0"],
-				"PTS": ["15", "19", "30", "2", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
-				"FGM-A": ["6-16", "8-13", "12-20", "8-13", "2-5", "1-4", "6-7", "2-6", "5-8", "1-4", "0-3", "0-2", "0-0", "0-0"],
+				"MIN": ["41", "30", "32", "29", "23", "16", "12", "9", "12", "9", "4", "1", "0", "0"],
+				"PTS": ["42", "16", "26", "8", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
+				"FGM-A": ["19-32", "4-12", "9-17", "8-13", "2-5", "1-4", "6-7", "2-6", "5-8", "1-4", "0-3", "0-2", "0-0", "0-0"],
 				"3PM-A": ["1-3", "2-4", "4-9", "0-0", "1-2", "2-2", "0-0", "0-1", "1-2", "0-0", "0-1", "0-0", "0-0", "0-0"],
 				"FTM-A": ["3-3", "1-1", "6-8", "4-4", "1-3", "0-1", "2-3", "0-1", "0-2", "0-0", "0-0", "0-0", "0-0", "0-0"],
 				"OFF": ["1", "3", "0", "1", "0", "0", "6", "1", "0", "0", "0", "0", "0", "0"],
@@ -108,10 +108,10 @@
 			}
 		},
 		"Away Team" : {
-			"Team Name" : "Los Angeles Lakers",
-			"Players": ["Chris Paul", "DeAndre Jordan", "Blake Griffin", "Josh Smith", "Jamal Crawford", "Paul Pierce", "Austin Rivers", "J.J. Redick", "Wesley Johnson", "Luc Mbah A Moute", "Lance Stephenson", "Pablo Prigioni", "Cole Aldrich", "Branden Dawson"],
+			"Team Name" : "LA Lakers",
+			"Players": ["D'Angelo Russel", "Julius Randle", "Kobe Bryant", "Lou Williams", "Jordan Clarkson", "Brandon Bass", "Tarik Black", "Roy Hibbert", "Larry Nance Jr.", "Ryan Kelly", "Metta World Peace", "Nick Young", "Robert Sacre", "Marcelo Huertas"],
 			"Stats" : {
-			"MIN": ["35", "39", "29", "27", "17", "30", "15", "12", "9", "8", "3", "0", "0", "0"],
+			"MIN": ["29", "39", "34", "35", "18", "15", "20", "4", "9", "3", "11", "0", "0", "0"],
 			"PTS": ["21", "30", "22", "9", "12", "24", "7", "2", "5", "3", "0", "0", "0", "0"],
 			"FGM-A": ["5-12", "8-21", "9-19", "11-16", "1-5", "1-6", "3-7", "0-2", "3-4", "0-2", "0-1", "0-0", "0-0", "0-0"],
 			"3PM-A": ["1-2", "3-9", "4-5", "0-0", "1-2", "2-4", "0-0", "0-1", "1-2", "0-0", "0-2", "0-0", "0-0", "0-0"],
