@@ -9,7 +9,8 @@
 #import "StatsLayout.h"
 #import "Game.h"
 
-//#define NUMBEROFCOLUMNS 
+#import "HomeCollectionView.h"
+#import "StatsCollectionViewCell.h"
 
 @interface StatsLayout ()
 @property (strong, nonatomic) NSMutableArray *itemAttributes;
@@ -17,6 +18,10 @@
 @property (nonatomic, assign) CGSize contentSize;
 
 @property Game *game;
+@property HomeCollectionView *scv;
+@property StatsCollectionViewCell *scvc;
+
+
 @end
 
 @implementation StatsLayout
@@ -131,6 +136,7 @@
     UICollectionViewLayoutAttributes *attributes = [[self.itemAttributes lastObject] lastObject];
     contentHeight = attributes.frame.origin.y+attributes.frame.size.height;
     self.contentSize = CGSizeMake(contentWidth, contentHeight);
+
 }
 
 - (CGSize)collectionViewContentSize
@@ -216,7 +222,8 @@
     if (columnIndex == 0) {
         size.width += 50; // In our design the first column should be the widest one
     }
-    return CGSizeMake([@(size.width + 20) floatValue], 30); // Extra space of 9px for all the items
+
+    return CGSizeMake([@(size.width + 20) floatValue], 20);
 
 }
 

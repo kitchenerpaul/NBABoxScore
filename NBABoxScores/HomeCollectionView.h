@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatsCollectionView : UICollectionView
+@interface HomeCollectionView : UICollectionView
 
 @end

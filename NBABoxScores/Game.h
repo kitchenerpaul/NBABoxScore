@@ -13,7 +13,6 @@
 // Info from JSON
 
 @property NSMutableArray *games;
-//@property NSMutableArray *teams;
 @property NSDictionary *homeTeamDictionary;
 @property NSDictionary *awayTeamDictionary;
 @property NSString *homeTeamName;

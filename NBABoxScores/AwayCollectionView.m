@@ -1,14 +1,14 @@
 //
-//  StatsCollectionView.m
+//  AwayCollectionView.m
 //  NBABoxScores
 //
-//  Created by Paul Kitchener on 12/9/15.
+//  Created by Paul Kitchener on 12/12/15.
 //  Copyright © 2015 Paul Kitchener. All rights reserved.
 //
 
-#import "StatsCollectionView.h"
+#import "AwayCollectionView.h"
 
-@implementation StatsCollectionView
+@implementation AwayCollectionView
 
 /*
 // Only override drawRect: if you perform custom drawing.

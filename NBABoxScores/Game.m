@@ -39,13 +39,15 @@
             self.foulsArray = [self.statsDictionary objectForKey:@"PF"];
             self.plusMinusArray = [self.statsDictionary objectForKey:@"+/-"];
 
+            self.awayTeamDictionary = [dictionary objectForKey:@"Away Team"];
+            self.awayTeamName = [self.awayTeamDictionary objectForKey:@"Team Name"];
 
         }
-
-        
 
     }
     return self;
 }
+
+
 
 @end

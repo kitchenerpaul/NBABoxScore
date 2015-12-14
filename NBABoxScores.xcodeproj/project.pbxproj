@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		171FB2341C1A1CA500EAC81E /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 171FB2331C1A1CA500EAC81E /* Game.m */; };
-		171FB23C1C1B628B00EAC81E /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 171FB23B1C1B628B00EAC81E /* game.json */; };
 		17AF6D181C18E0EC00111AEA /* StatsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D171C18E0EC00111AEA /* StatsLayout.m */; };
 		17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */; };
 		17AF6D1F1C18E31C00111AEA /* StatsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */; };
-		17AF6D221C18F7A400111AEA /* StatsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D211C18F7A400111AEA /* StatsCollectionView.m */; };
+		17AF6D221C18F7A400111AEA /* HomeCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AF6D211C18F7A400111AEA /* HomeCollectionView.m */; };
 		17B7A70D1C0CF65B0061050A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A70C1C0CF65B0061050A /* main.m */; };
 		17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A70F1C0CF65B0061050A /* AppDelegate.m */; };
 		17B7A7131C0CF65B0061050A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7121C0CF65B0061050A /* ViewController.m */; };
@@ -24,6 +23,8 @@
 		17B7A7341C0CF65B0061050A /* NBABoxScoresUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7331C0CF65B0061050A /* NBABoxScoresUITests.m */; };
 		17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* ContentViewController.m */; };
 		17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7871C1251BE0061050A /* StatsTableViewCell.m */; };
+		17BEB6371C1CF83F00F2AF37 /* AwayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */; };
+		17BEB63D1C1D037900F2AF37 /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 17BEB63C1C1D037900F2AF37 /* game.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,15 +47,14 @@
 /* Begin PBXFileReference section */
 		171FB2321C1A1CA500EAC81E /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		171FB2331C1A1CA500EAC81E /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		171FB23B1C1B628B00EAC81E /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 		17AF6D161C18E0EC00111AEA /* StatsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsLayout.h; sourceTree = "<group>"; };
 		17AF6D171C18E0EC00111AEA /* StatsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsLayout.m; sourceTree = "<group>"; };
 		17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCollectionViewCell.h; sourceTree = "<group>"; };
 		17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCollectionViewCell.m; sourceTree = "<group>"; };
 		17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCollectionViewCell.h; sourceTree = "<group>"; };
 		17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCollectionViewCell.m; sourceTree = "<group>"; };
-		17AF6D201C18F7A400111AEA /* StatsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCollectionView.h; sourceTree = "<group>"; };
-		17AF6D211C18F7A400111AEA /* StatsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCollectionView.m; sourceTree = "<group>"; };
+		17AF6D201C18F7A400111AEA /* HomeCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionView.h; sourceTree = "<group>"; };
+		17AF6D211C18F7A400111AEA /* HomeCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionView.m; sourceTree = "<group>"; };
 		17B7A7081C0CF65B0061050A /* NBABoxScores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBABoxScores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B7A70C1C0CF65B0061050A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17B7A70E1C0CF65B0061050A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +76,9 @@
 		17B7A7421C0F5F6B0061050A /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		17B7A7861C1251BE0061050A /* StatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewCell.h; sourceTree = "<group>"; };
 		17B7A7871C1251BE0061050A /* StatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewCell.m; sourceTree = "<group>"; };
+		17BEB6351C1CF83F00F2AF37 /* AwayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayCollectionView.h; sourceTree = "<group>"; };
+		17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayCollectionView.m; sourceTree = "<group>"; };
+		17BEB63C1C1D037900F2AF37 /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +124,10 @@
 				17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */,
 				17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */,
 				17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */,
-				17AF6D201C18F7A400111AEA /* StatsCollectionView.h */,
-				17AF6D211C18F7A400111AEA /* StatsCollectionView.m */,
+				17AF6D201C18F7A400111AEA /* HomeCollectionView.h */,
+				17AF6D211C18F7A400111AEA /* HomeCollectionView.m */,
+				17BEB6351C1CF83F00F2AF37 /* AwayCollectionView.h */,
+				17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -169,9 +174,9 @@
 			children = (
 				17B7A70E1C0CF65B0061050A /* AppDelegate.h */,
 				17B7A70F1C0CF65B0061050A /* AppDelegate.m */,
+				17BEB63C1C1D037900F2AF37 /* game.json */,
 				17B7A71A1C0CF65B0061050A /* Assets.xcassets */,
 				17B7A71C1C0CF65B0061050A /* LaunchScreen.storyboard */,
-				171FB23B1C1B628B00EAC81E /* game.json */,
 				17B7A71F1C0CF65B0061050A /* Info.plist */,
 				17B7A7171C0CF65B0061050A /* NBABoxScores.xcdatamodeld */,
 				17B7A70C1C0CF65B0061050A /* main.m */,
@@ -303,7 +308,7 @@
 				17B7A71E1C0CF65B0061050A /* LaunchScreen.storyboard in Resources */,
 				17B7A71B1C0CF65B0061050A /* Assets.xcassets in Resources */,
 				17B7A7161C0CF65B0061050A /* Main.storyboard in Resources */,
-				171FB23C1C1B628B00EAC81E /* game.json in Resources */,
+				17BEB63D1C1D037900F2AF37 /* game.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,10 +333,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BEB6371C1CF83F00F2AF37 /* AwayCollectionView.m in Sources */,
 				17B7A7131C0CF65B0061050A /* ViewController.m in Sources */,
 				171FB2341C1A1CA500EAC81E /* Game.m in Sources */,
 				17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */,
-				17AF6D221C18F7A400111AEA /* StatsCollectionView.m in Sources */,
+				17AF6D221C18F7A400111AEA /* HomeCollectionView.m in Sources */,
 				17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */,
 				17AF6D1F1C18E31C00111AEA /* StatsCollectionViewCell.m in Sources */,
 				17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */,

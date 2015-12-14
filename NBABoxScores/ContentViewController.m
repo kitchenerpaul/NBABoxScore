@@ -11,14 +11,14 @@
 #import "StatsLayout.h"
 #import "PlayerCollectionViewCell.h"
 #import "StatsCollectionViewCell.h"
-#import "StatsCollectionView.h"
+#import "HomeCollectionView.h"
 #import "Game.h"
 
 @interface ContentViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property StatsTableViewCell *statsCell;
 
-@property StatsCollectionView *statsCollectionView;
+@property HomeCollectionView *statsCollectionView;
 
 @property PlayerCollectionViewCell *playerCell;
 @property StatsCollectionViewCell *statsCollectionCell;
@@ -62,7 +62,8 @@
     self.dateLabel.text = [NSString stringWithFormat:@"%@",[self.dateFormatter stringFromDate:self.date]];
 
     self.arrayForBool = [[NSMutableArray alloc]init];
-    self.sectionTitleArray = [[NSMutableArray alloc]initWithObjects: @"GAME 1", @"GAME 2", @"GAME 3", @"GAME 4", @"GAME 5", @"GAME 6", @"GAME 7", @"GAME 8", nil];
+    self.sectionTitleArray = [[NSMutableArray alloc] initWithArray:self.game.games];
+
 
     for (int i = 0; i < self.sectionTitleArray.count; i++) {
         [self.arrayForBool addObject:[NSNumber numberWithBool:NO]];
@@ -106,7 +107,17 @@
     viewLabel.textColor = [UIColor whiteColor];
     viewLabel.font = [UIFont boldSystemFontOfSize:13.0];
     viewLabel.textAlignment = NSTextAlignmentCenter;
-    viewLabel.text = [NSString stringWithFormat:@"%@ VS Away Team",self.game.homeTeamName];
+
+    for (int i = 0; i < self.game.games.count; i++) {
+        if (section == i) {
+            NSDictionary *homeDict = [[self.game.games objectAtIndex:i] objectForKey:@"Home Team"];
+            self.game.homeTeamName = [homeDict objectForKey:@"Team Name"];
+            NSDictionary *awayDict = [[self.game.games objectAtIndex:i] objectForKey:@"Away Team"];
+            self.game.awayTeamName = [awayDict objectForKey:@"Team Name"];
+            viewLabel.text = [NSString stringWithFormat:@"%@ VS %@", self.game.homeTeamName, self.game.awayTeamName];
+        }
+    }
+
     [sectionView addSubview:viewLabel];
 
     UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39.5, self.view.frame.size.width, 0.5)];
@@ -132,6 +143,17 @@
         }
         [self.expandableTableView reloadSections:[NSIndexSet indexSetWithIndex:gestureRecognizer.view.tag] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+//    if(indexPath.section == yourSection && indexPath.row == yourRow) {
+//        return 150.0;
+//    }
+//    // "Else"
+//    return someDefaultHeight;
+//    return self.statsCollectionView.frame.size.height;
+    return 610;
 }
 
 - (IBAction)onLeftArrowPressed:(id)sender {
@@ -188,13 +210,8 @@
         } else {
             self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
 
-            self.statTitlesArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-            NSArray *tempArray = [self.game.statsDictionary allKeys];
-            [self.statTitlesArray addObjectsFromArray:tempArray];
+            self.statTitlesArray = [[NSMutableArray alloc] initWithObjects:@"", @"MIN", @"PTS", @"FGM-A", @"3PM-A", @"FTM-A", @"OFF", @"DEF", @"TOT", @"AST", @"STL", @"BLK", @"TO", @"PF", @"+/-",  nil];
             self.statsCollectionCell.statsLabel.text = [self.statTitlesArray objectAtIndex:indexPath.row];
-
-            NSLog(@"Stat Titles: %@", self.statTitlesArray);
-
 
             self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:11.0];
             self.statsCollectionCell.statsLabel.textColor = [UIColor darkGrayColor];
@@ -225,14 +242,63 @@
             self.statsCollectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StatsCollectionViewCellID" forIndexPath:indexPath];
 
             if (indexPath.row == 1) {
-                    self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.minutesArray objectAtIndex:indexPath.section]];
+
+                NSMutableArray *tempMinutesArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempMinutesArray addObjectsFromArray:self.game.minutesArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempMinutesArray objectAtIndex:indexPath.section]];
             } else if (indexPath.row == 2) {
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.pointsArray objectAtIndex:indexPath.section]];
+                NSMutableArray *tempPointsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempPointsArray addObjectsFromArray:self.game.pointsArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPointsArray objectAtIndex:indexPath.section]];
             } else if (indexPath.row == 3) {
-                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [self.game.fgmaArray objectAtIndex:indexPath.section]];
+                NSMutableArray *tempfgmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempfgmaArray addObjectsFromArray:self.game.fgmaArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempfgmaArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 4) {
+                NSMutableArray *temp3pmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [temp3pmaArray addObjectsFromArray:self.game.threepmaArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [temp3pmaArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 5) {
+                NSMutableArray *tempftmaArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempftmaArray addObjectsFromArray:self.game.ftmaArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempftmaArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 6) {
+                NSMutableArray *tempOffRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempOffRebArray addObjectsFromArray:self.game.offRebArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempOffRebArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 7) {
+                NSMutableArray *tempDefRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempDefRebArray addObjectsFromArray:self.game.defRebArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempDefRebArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 8) {
+                NSMutableArray *tempTotRebArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempTotRebArray addObjectsFromArray:self.game.totRebArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTotRebArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 9) {
+                NSMutableArray *tempAssistsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempAssistsArray addObjectsFromArray:self.game.assistsArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempAssistsArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 10) {
+                NSMutableArray *tempStealsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempStealsArray addObjectsFromArray:self.game.stealsArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempStealsArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 11) {
+                NSMutableArray *tempBlocksArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempBlocksArray addObjectsFromArray:self.game.blocksArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempBlocksArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 12) {
+                NSMutableArray *tempTurnoversArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempTurnoversArray addObjectsFromArray:self.game.turnoversArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempTurnoversArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 13) {
+                NSMutableArray *tempFoulsArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempFoulsArray addObjectsFromArray:self.game.foulsArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempFoulsArray objectAtIndex:indexPath.section]];
+            } else if (indexPath.row == 14) {
+                NSMutableArray *tempPlusMinusArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
+                [tempPlusMinusArray addObjectsFromArray:self.game.plusMinusArray];
+                self.statsCollectionCell.statsLabel.text = [NSString stringWithFormat:@"%@", [tempPlusMinusArray objectAtIndex:indexPath.section]];
             }
-
-
 
             self.statsCollectionCell.statsLabel.font = [UIFont systemFontOfSize:9.5];
             self.statsCollectionCell.statsLabel.textColor = [UIColor blackColor];
@@ -242,5 +308,6 @@
         }
     }
 }
+
 
 @end
