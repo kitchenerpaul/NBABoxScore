@@ -24,7 +24,9 @@
 		17B7A7431C0F5F6B0061050A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7421C0F5F6B0061050A /* ContentViewController.m */; };
 		17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B7A7871C1251BE0061050A /* StatsTableViewCell.m */; };
 		17BB415D1C1F58480086514E /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 17BB415C1C1F58480086514E /* game.json */; };
-		17BEB6371C1CF83F00F2AF37 /* AwayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */; };
+		17BB41651C21EE140086514E /* AwayCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BB41641C21EE140086514E /* AwayCollectionView.m */; };
+		17BB41691C23A6CC0086514E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BB41681C23A6CC0086514E /* Player.m */; };
+		17BB416C1C23AEEE0086514E /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BB416B1C23AEEE0086514E /* Team.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,8 +79,12 @@
 		17B7A7861C1251BE0061050A /* StatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewCell.h; sourceTree = "<group>"; };
 		17B7A7871C1251BE0061050A /* StatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewCell.m; sourceTree = "<group>"; };
 		17BB415C1C1F58480086514E /* game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game.json; sourceTree = "<group>"; };
-		17BEB6351C1CF83F00F2AF37 /* AwayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayCollectionView.h; sourceTree = "<group>"; };
-		17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayCollectionView.m; sourceTree = "<group>"; };
+		17BB41631C21EE140086514E /* AwayCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayCollectionView.h; sourceTree = "<group>"; };
+		17BB41641C21EE140086514E /* AwayCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayCollectionView.m; sourceTree = "<group>"; };
+		17BB41671C23A6CC0086514E /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		17BB41681C23A6CC0086514E /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		17BB416A1C23AEEE0086514E /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
+		17BB416B1C23AEEE0086514E /* Team.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,10 @@
 			children = (
 				171FB2321C1A1CA500EAC81E /* Game.h */,
 				171FB2331C1A1CA500EAC81E /* Game.m */,
+				17BB416A1C23AEEE0086514E /* Team.h */,
+				17BB416B1C23AEEE0086514E /* Team.m */,
+				17BB41671C23A6CC0086514E /* Player.h */,
+				17BB41681C23A6CC0086514E /* Player.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -118,16 +128,10 @@
 		17AF6D191C18E10000111AEA /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				17BB41661C21EE1A0086514E /* Away Team */,
+				17BB415E1C1F7E100086514E /* Home Team */,
 				17AF6D161C18E0EC00111AEA /* StatsLayout.h */,
 				17AF6D171C18E0EC00111AEA /* StatsLayout.m */,
-				17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */,
-				17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */,
-				17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */,
-				17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */,
-				17AF6D201C18F7A400111AEA /* HomeCollectionView.h */,
-				17AF6D211C18F7A400111AEA /* HomeCollectionView.m */,
-				17BEB6351C1CF83F00F2AF37 /* AwayCollectionView.h */,
-				17BEB6361C1CF83F00F2AF37 /* AwayCollectionView.m */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -200,6 +204,28 @@
 				17B7A7351C0CF65B0061050A /* Info.plist */,
 			);
 			path = NBABoxScoresUITests;
+			sourceTree = "<group>";
+		};
+		17BB415E1C1F7E100086514E /* Home Team */ = {
+			isa = PBXGroup;
+			children = (
+				17AF6D1A1C18E30C00111AEA /* PlayerCollectionViewCell.h */,
+				17AF6D1B1C18E30C00111AEA /* PlayerCollectionViewCell.m */,
+				17AF6D1D1C18E31C00111AEA /* StatsCollectionViewCell.h */,
+				17AF6D1E1C18E31C00111AEA /* StatsCollectionViewCell.m */,
+				17AF6D201C18F7A400111AEA /* HomeCollectionView.h */,
+				17AF6D211C18F7A400111AEA /* HomeCollectionView.m */,
+			);
+			name = "Home Team";
+			sourceTree = "<group>";
+		};
+		17BB41661C21EE1A0086514E /* Away Team */ = {
+			isa = PBXGroup;
+			children = (
+				17BB41631C21EE140086514E /* AwayCollectionView.h */,
+				17BB41641C21EE140086514E /* AwayCollectionView.m */,
+			);
+			name = "Away Team";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,9 +359,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17BEB6371C1CF83F00F2AF37 /* AwayCollectionView.m in Sources */,
+				17BB41651C21EE140086514E /* AwayCollectionView.m in Sources */,
 				17B7A7131C0CF65B0061050A /* ViewController.m in Sources */,
 				171FB2341C1A1CA500EAC81E /* Game.m in Sources */,
+				17BB41691C23A6CC0086514E /* Player.m in Sources */,
 				17AF6D1C1C18E30C00111AEA /* PlayerCollectionViewCell.m in Sources */,
 				17AF6D221C18F7A400111AEA /* HomeCollectionView.m in Sources */,
 				17B7A7101C0CF65B0061050A /* AppDelegate.m in Sources */,
@@ -344,6 +371,7 @@
 				17B7A7191C0CF65B0061050A /* NBABoxScores.xcdatamodeld in Sources */,
 				17AF6D181C18E0EC00111AEA /* StatsLayout.m in Sources */,
 				17B7A70D1C0CF65B0061050A /* main.m in Sources */,
+				17BB416C1C23AEEE0086514E /* Team.m in Sources */,
 				17B7A7881C1251BE0061050A /* StatsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

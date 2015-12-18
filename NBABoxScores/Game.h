@@ -35,6 +35,6 @@
 @property NSMutableArray *foulsArray;
 @property NSMutableArray *plusMinusArray;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+-(instancetype)initWithDictionary:(NSDictionary *)jsonDictionary;
 
 @end

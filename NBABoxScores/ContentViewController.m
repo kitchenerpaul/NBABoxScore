@@ -18,7 +18,7 @@
 
 @property StatsTableViewCell *statsCell;
 
-@property HomeCollectionView *statsCollectionView;
+@property HomeCollectionView *homeCollectionView;
 
 @property PlayerCollectionViewCell *playerCell;
 @property StatsCollectionViewCell *statsCollectionCell;
@@ -29,9 +29,6 @@
 @property NSMutableArray *statTitlesArray;
 
 @property NSInteger gameSection;
-
-
-
 
 @end
 
@@ -87,7 +84,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    self.statsCell = [StatsTableViewCell new];
+//    self.statsCell = [StatsTableViewCell new];
     self.statsCell = [tableView dequeueReusableCellWithIdentifier:@"StatsCellID" forIndexPath:indexPath];
 
     return self.statsCell;
@@ -198,6 +195,7 @@
 
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+
             self.playerCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerCollectionViewCellID" forIndexPath:indexPath];
             self.playerCell.backgroundColor = [UIColor colorWithRed:.1 green:.3 blue:.5 alpha:1];
             self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:12.0];
@@ -212,8 +210,6 @@
                     self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
                 }
             }
-
-//            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", self.game.homeTeamName];
             self.playerCell.separatorView.hidden = YES;
             self.playerCell.bottomSeparatorView.hidden = YES;
 
@@ -250,10 +246,6 @@
 
                 }
             }
-
-//            NSMutableArray *tempHomePlayersArray = [[NSMutableArray alloc] initWithObjects:@"", nil];
-//            [tempHomePlayersArray addObjectsFromArray:self.game.homePlayers];
-//            self.playerCell.playerNameLabel.text = [NSString stringWithFormat:@"%@", [tempHomePlayersArray objectAtIndex:indexPath.section]];
 
             self.playerCell.playerNameLabel.font = [UIFont systemFontOfSize:9.5];
             self.playerCell.playerNameLabel.textColor = [UIColor blackColor];
@@ -454,7 +446,9 @@
 
             return self.statsCollectionCell;
         }
+
     }
+
 }
 
 

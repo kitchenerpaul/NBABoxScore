@@ -30,6 +30,8 @@
 @property NSDateFormatter *dateFormatter;
 @property NSTimeInterval oneDay;
 @property int secondsInDay;
+@property BOOL isHomeTeam;
+
 @property (nonatomic, assign) id<ContentViewControllerDelegate> delegate;
 
 @end
